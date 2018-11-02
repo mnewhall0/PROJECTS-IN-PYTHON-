@@ -1,0 +1,147 @@
+# Telephone directory Application:
+# Most cell phones have a telephone directory (or in some cases called "Address
+# Book", or "Contact List"). 
+# The program should have the following features:
+#(a) Ability to add new addresses to the directory.
+#(b) Ability to modify existing addresses in the directory.
+#(c) Ability to delete addresses in the directory.
+#(d) Ability to display all the entries in the directory.
+#(e) Ability to add various pieces of information per individual in the directory -
+# telephone number, home address and so on.
+
+# Please save the contents of the telephone directory in a text file so that
+# even after you quit the program and later restart it, you can read the contents
+# of the directory from the text file.
+# You can save the data in a simple text file, one entry per line,
+# something like this:
+# John Smith; 123-456-789; 123 Hello Lane, Santa Clara, CA 95051
+# Jeff David; 456-123-789; 456 Hello Lane, Santa Clara, CA 95051
+
+directory = []                                      # initial directory for person's info
+  
+def read_file():                                    # defining function read_file
+    global directory                                # showing that directory is global valuable                
+    import os.path                                  # importing module os.path
+
+    if not os.path.exists ("telephone_directory.txt"):# checking if path of file "telephone 
+        return                                        # directory not exits", return nothing
+    file = open("telephone_directory.txt")            # open file "telephone directory"
+    lines = file.readlines()                          # read every line in the file
+    print(lines)                                      # print all lines
+    
+    for line in lines:                              # iterating through each line
+        each_entry = {}                             # creating a dictionary for each person's info
+        each_entry["name"] = line.split(";")[0].strip() # creating key "name" and assigning a value
+        each_entry["phone number"] = line.split(";")[1].strip() # creating key "phone number" w/value
+        each_entry["address"] = line.split(";")[2].strip()# creating key "address" with value
+        directory.append(each_entry)                # adding each entry of person's infor to directory
+    print(directory)                                # printing dicrectory
+    return directory
+
+def menu():                                                             # creating function menu
+    print("Menu:")                                                      # printing string "Menu"
+    print("Type a to add new entry, m to modify an existing entry,")    # printing a string
+    print("Type d to delete an existing entry, s to show all entries.") # printing a string
+    entry = input("Please enter your option: ")                         # user enters an option
+    return entry                                                        # show user's option
+
+def add_entry():                                                 # creating a function add_entry
+    global directory                                             # using global directory
+    entry = {}                                                   # creating a dictionary with new
+                                                                 # person's info
+    line1 = input("Please enter the person's name: ")            # user enters name
+    entry["name"] = line1                                        # creating key "name" with value
+                                                                 # of person's name
+    line2 = input("Please enter the address of " + line1 + " : ")# user enters address
+    entry["address"] = line2                                     # creating key "address" with value
+                                                                 # person's address
+    line3 = input("Please enter the phone number of " + line1 + " : ")# user enters phone
+    entry["phone number"] = line3                                #creating key "phone number" with
+                                                                 # value of phone
+    directory.append(entry)                                      # each entry with person's info is
+                                                                 # added to the directory
+    print("Entry saved.")                                        # confirmation of saving info in
+                                                                 # directory
+    print (directory)                                            # print directory
+   
+        
+def show_all_entries():                                          #defining a function
+    global directory                                             # using global directory
+    for dic in directory:                                        # itirating through each dictionary
+        each_entry = (dic["name"] + ", " + dic["phone number"] +", " + dic["address"]) # each entry
+                                                                 # consist of name, phone# and address
+        print(each_entry)                                        # printing each entry on the screen
+    
+     
+def delete_entry():                                              # defining a function
+    value = input("Please enter a name of the person you want to delete: ")# user enter's a name
+    for dic in directory:                                        # iterating through each dictionary
+        list_of_keys = list(dic.keys())                          # making a list of keys in each dic
+        for key in list_of_keys:                                 # iterating through each key
+            if dic[key] == value:                                # if value in dictionary is equal
+                                                                 # to a value that user entered
+                directory.remove(dic)                            # erasing the whole person's info in
+                                                                 # the directory
+                print(directory)                                 # print directory
+                return directory                                 # return directory
+
+def modify_entry():                                              # defining a function
+    name = input("Please enter the name of the person you want to modify: ") # user enters a name
+    new_address = input("Please re-enter the address of " + name + ": ") # user enters a new address
+    new_phone = input("Please re-enter the phone number of " + name + ": ")# user enters a new phone #
+    
+    
+    for dic in directory:                      # iterating through each dictionary(person's info)  
+        list_of_keys = list(dic.keys())        # creating a list of keys in each dictionary
+        list_of_values = list(dic.values())    # creting a list of values in each dictionary
+        if name in list_of_values:             # checking if person's name is in the list of values
+            for key in list_of_keys:           # if so, itirating through each key in list of keys     
+                if key == "name":              # if key is equal to "name"
+                    dic[key] == name           # value for this key will be person's name
+                elif key == "address":         # if key is equal to "address"
+                    dic[key] = new_address     # value for this key is a new_address of this person
+                elif key == "phone number":    # if key is equal to "phone number"
+                    dic[key] = new_phone       # value for this key is a new phone number
+                else:
+                    modify_entry()             # otherwise, start modify_entry function again
+            print(directory)                   # printing directory with newly entered information
+            return directory                   # return directory with newly entered information
+         
+def save_file():                               # defining a function
+    string_directory = []                      # initial directory with 0 entries is an empty list
+    for item in directory:                     # iterating through each dictionary in directory
+        person_info = (item["name"] + "; " + item["phone number"] + "; " + item["address"] + "\n")
+        print(person_info)                     # creating a string with person's info and printing it
+        string_directory.append(person_info)   # adding string with personal info to string_directory
+    print(string_directory)                    # printing the string directory
+
+    file = open("telephone_directory.txt", "w") # opening a file "telephone directory" for writing
+    file.writelines(string_directory)           # writing all people's infor in the file
+    file.close()                                # closing the file
+    
+    
+def telephone_directory():                      # defining a function
+    user_entry = menu()                         # running function menu() so user can enter a letter
+    if user_entry == "a":                       # if user enters "a"
+        add_entry()                             # run function add_entry()
+        telephone_directory()                   # call function telephone directory again
+    elif user_entry == "s":                     # if user enters "s"             
+        show_all_entries()                      # run function show_all_entries()
+        telephone_directory()                   # call function telephone directory again
+    elif user_entry == "d":                     # if user enters "d"
+        delete_entry()                          # run fuction delete_entry()
+        telephone_directory()                   # call function telephone directory again
+    elif user_entry == "m":                     # if user enters "m"
+        modify_entry()                          # run function modiry_directory()
+        telephone_directory()                   # call function telephone directory again
+    elif user_entry == "exit":                  # if user enters "exit"
+        save_file()                             # save the directory with all the information in file
+    else:
+        print("Please enter the correct letter: ") # otherwise, print the correct letter and
+        telephone_directory()                      # call function telephone directory again 
+
+def telephone_directory_file():             # defining a funciton telephone_directory_file()
+    read_file()                             # run function read_file() to see if file is empty or not
+    telephone_directory()                   # call function telephone directory
+
+
