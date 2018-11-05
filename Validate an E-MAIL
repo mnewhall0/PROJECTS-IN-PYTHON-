@@ -1,0 +1,53 @@
+# Write a function that validates an e-mail address. 
+# A valid e-mail address is of the form <localname>@<domain>, where domain ends with .(dot) 'com', 'edu' or 'org'.
+
+# Examples:
+# Please enter an e-mail address: john123@hotmail.com
+# Valid e-mail
+
+# Please enter an e-mail address: john123@gmail
+# Invalid e-mail, does not end on com, edu or org
+
+# Please enter an e-mail address: sa!!y@hotmail.com
+# Invalid e-mail, other characters besides letters in name
+
+# Please enter an e-mail address: sally@hotmail@com
+# Invalid e-mail @ symbol you can meet more than 1 time in the e-mail
+
+
+email = input("Please enter an e-mail address: ")# user enters an e-mail
+
+import re                                                             # importing regular expression module
+
+def validate(email):                                                  # defining a function
+    count = 0                                                         # initial count of "@" symbols
+    for item in email:                                                # iterating through e-mail string
+        if item == "@":                                               # checking if item equal to @
+            count = count + 1                                         # counting the amount of @
+    if count == 1:                                                    # checking if email has only 1 @
+        strings = email.split("@")                                    # if so, split email on @
+        if strings[1][-4:] == ".com" or strings[1][-4:] ==".edu" or strings[1][-4:] ==".org":
+                                                                      # check if email ends on the following           
+            regexpd = re.compile(r"[0-9\.\_\-]")                      # if so, compiling regexp from digits
+                                                                      # and dot
+            name = strings[0]                                         # assigning valuable name to first string 
+            for item in name:                                         # iterating trough each item in name
+                if regexpd.search(name[-1]):                          # cheking if last item is equal to regexpd
+                    name = name[:-1]                                  # if so, shorten the name for one item
+            
+            regexpl = re.compile(r"[a-zA-Z]")                         # assigning regexpl from letters
+            
+            for item in name:                                         # iterating through each item in shortened email name
+                if regexpl.search(item):                              # checking if regexp is equal to each item
+                    continue                                          # if so, continue to the next name item
+                else:                                                 # otherwise, return a mistake
+                    return "Invalid e-mail, other characters besides letters in name" 
+            
+        else:                                                         
+            return "Invalid e-mail, does not end on com, edu or org"   
+    else:                                                             
+         return "Invalid e-mail @ symbol you can meet more than 1 time or 0 time in the e-mail" 
+    return "Valid e-mail"                                            
+            
+
+print(validate(email)) # calling function
