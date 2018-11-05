@@ -1,6 +1,7 @@
 PROJECTS-IN-PYTHON-
 
 1. PROJECT: TELEPHONE DIRECTORY APPLICATION
+
    Most cell phones have a telephone directory (or in some cases called "Address Book", or "Contact List").    
    The program have the following features:   
    (a) Ability to add new addresses to the directory.   
@@ -16,6 +17,7 @@ PROJECTS-IN-PYTHON-
    Jeff David; 456-123-789; 456 Hello Lane, Santa Clara, CA 95051
    
 2. PROCEDURE: VALIDATE A PASSWORD
+
    Write a function that validates the password. It should be 6-8 characters long.  
    It consists of alphanumeric characters with a mixture of digits and letters.
       
