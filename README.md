@@ -44,3 +44,12 @@ PROJECTS-IN-PYTHON-
 
    Please enter an e-mail address: sally@hotmail@com
    Invalid e-mail @ symbol you can meet more than 1 time in the e-mail
+   
+4. # PROCEDURE: PRIME NUMBERS
+
+   Create a function that takes in a positive integer and return a list of prime    numbers from 1 up to that number. 
+   A prime number is only divisible by 1 and itself.
+
+   Example
+   Please enter a number: 20
+   [2, 3, 5, 7, 11, 13, 17, 19]
