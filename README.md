@@ -27,3 +27,19 @@ PROJECTS-IN-PYTHON-
    Enter a password: pas@wd12     password consists of invalid characters   
    Enter a password: PassWD12     VALID PASSWORD
    
+3. VALIDATE AN E-MAIL
+   Write a function that validates an e-mail address. 
+   A valid e-mail address is of the form <localname>@<domain>, where domain ends with .(dot) 'com', 'edu' or 'org'.
+
+   Examples:
+   Please enter an e-mail address: john123@hotmail.com
+   Valid e-mail
+
+   Please enter an e-mail address: john123@gmail
+   Invalid e-mail, does not end on com, edu or org
+
+   Please enter an e-mail address: sa!!y@hotmail.com
+   Invalid e-mail, other characters besides letters in name
+
+   Please enter an e-mail address: sally@hotmail@com
+   Invalid e-mail @ symbol you can meet more than 1 time in the e-mail
