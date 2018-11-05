@@ -21,8 +21,7 @@ PROJECTS-IN-PYTHON-
    It consists of alphanumeric characters with a mixture of digits and letters.
 
    Examples:    
-   Enter a password: 123456       no letters in the password
-   
+   Enter a password: 123456       no letters in the password   
    Enter a password: passwd123    assword is too big or small
    Enter a password: pas@wd12     password consists of invalid characters
    Enter a password: PassWD12     VALID PASSWORD
