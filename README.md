@@ -28,6 +28,7 @@ PROJECTS-IN-PYTHON-
    Enter a password: PassWD12     VALID PASSWORD
    
 3. VALIDATE AN E-MAIL
+
    Write a function that validates an e-mail address. 
    A valid e-mail address is of the form <localname>@<domain>, where domain ends with .(dot) 'com', 'edu' or 'org'.
 
