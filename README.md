@@ -56,4 +56,4 @@ PROJECTS-IN-PYTHON-
    
 5. PROCEDURE: CONVERT ROMAN NUMERALS INTO ARABIC NUMERALS
 
-   Example: >>> romanIntoArabic("mcmlxxi") result 1971
+   Example:    >>> romanIntoArabic("mcmlxxi")    result 1971
