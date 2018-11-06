@@ -1,0 +1,62 @@
+# Conversion of Roman Numbers into Arabic Numbers
+# Example:  >>> romanIntoArabic("mcmlxxi") result 1971
+
+# value of roman letters
+# i = 1
+# v = 5
+# x = 10
+# l = 50
+# c = 100
+# d = 500
+# m = 1000
+
+def romanIntoArabic(romanNum):
+    
+    sum = 0                                                            # initial sum
+
+    for i in range (0, len(romanNum)):                                 # iterating through the lenght of Roman numbers
+        
+        if romanNum[i] == 'i':
+            if (i + 1 < len(romanNum)) and romanNum[i+1] in 'vxlcdm':  #checks if the next number after 'i' 
+                                                                       # is 'v', 'x', 'l' , 'c', 'd','m'
+                sum -= 1                                               # if so, subtract 'i' ('i' == 1)
+            else:
+                sum += 1                                               # add 'i' to the sum
+        elif romanNum[i] == 'v':
+            if (i + 1 < len(romanNum)) and romanNum[i+1] in 'xlcdm':   # checks if the next number after 'v' 
+                                                                       # is 'x', 'l' , 'c', 'd'
+                sum -= 5                                               # if so, subtract 'v' ('v' == 5)
+            else:
+                sum += 5                                               # add 'v' to the sum
+        elif romanNum[i] == 'x':
+            if (i + 1 < len(romanNum)) and romanNum[i+1] in 'lcdm':    # checks if the next number after 'l'             
+                                                                       # is 'l', 'c', 'd' or 'm'
+                sum -= 10                                              # if so, subtract 'x' ('x' == 10)
+            else:
+                sum += 10                                              # add 'x' to the sum
+        elif romanNum[i] == 'l':
+            if (i + 1 < len(romanNum)) and romanNum[i+1] in 'cdm':     # checks if the next number after 'l' 
+                                                                       # is 'c', 'd', 'm'
+                sum -= 50                                              # substract 'l' from the sum ('l' == 50)
+            else:
+                sum += 50                                              # adds 'l' to the sum
+        elif romanNum[i] ==  'c':
+            if (i + 1 < len(romanNum)) and romanNum[i+1] in 'dm':      # checks if the next number after 'c' is 'd' or 'm'
+            
+                sum -= 100                                             # substract 'c' from the sum ('c' == 100)
+            else:
+                sum += 100                                             # add 'c' to the sum
+        elif romanNum[i] ==  'd':
+            if (i + 1 < len(romanNum)) and romanNum[n+1] == 'm':       # checks if the next number after 'd' is 'm'
+            
+                sum -= 500                                             # substract 'd' from the sum ('d' == 500)
+            else:
+                sum += 500                                             # add 'd' to the sum
+        else:
+                sum += 1000                                            # if number is 'm', 'm' is added to the sum
+
+        i = i + 1                                                      # i is incremented by 1
+
+    return sum
+
+
