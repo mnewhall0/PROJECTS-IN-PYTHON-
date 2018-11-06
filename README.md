@@ -53,3 +53,7 @@ PROJECTS-IN-PYTHON-
    Example    
    Please enter a number: 20   
    [2, 3, 5, 7, 11, 13, 17, 19]
+   
+5. PROCEDURE: CONVERT ROMAN NUMERALS INTO ARABIC NUMERALS
+
+   Example: >>> romanIntoArabic("mcmlxxi") result 1971
