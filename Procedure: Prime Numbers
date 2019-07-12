@@ -1,27 +1,19 @@
-# PROCEDURE: PRIME NUMBERS
+# PROCEDURE: PRIME NUMBERS COUNT
 
-# Create a function that takes in a positive integer and return a list of prime
-# numbers from 1 up to that number. A prime number is only divisible by 1 and itself.
+# Count prime numbers in number n, excluding n 
 
-# Example
-# Please enter a number: 20
-# [2, 3, 5, 7, 11, 13, 17, 19]
+def primeCount(n):
+    lst = []
+    
+    for num in range(2, n):
+        for i in range(2, num + 1):
+            if i == num:
+                lst.append(num)
+            if num % i == 0:
+                break              
+        
+    print(lst)
 
-def primeNumbers(number):                                   # defining a function primeNumbers that takes one arg
-    lst = []                                                # creating an empty list to put all numbers from 2 to number
-    for i in range (2, number+1):                           # iterating on each element from to number + 1
-        lst = lst + [i]                                     # adding each number to the list                                                                   
-
-    l = []                                                  # creating a new list where we put all prime numbers
-    for item in lst:                                        # iterating through each number in the list of numbers from 2 to number
-        if item == 2 or item == 3:                          # checking if item = 2 or 3
-            l = l + [item]                                  # if so, add item to the list
-        elif (item % 2 == 0) or (item % 3 == 0):            # checking if the remainder of item /2 or item/3 = 0                                                 
-            continue                                        # than continue to the next item            
-        else:                                               # if false,
-           l = l + [item]                                   # add item to the list l
-           
-    return l                                                # return a list with all prime numbers
-
-
+    return len(lst)
+            
         
